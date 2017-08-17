@@ -1,6 +1,28 @@
 [![Build Status](https://travis-ci.org/JosefFriedrich-shell/mscore-to-eps.sh.svg?branch=master)](https://travis-ci.org/JosefFriedrich-shell/mscore-to-eps.sh)
 
-# Run tests
+# mscore-to-eps.sh
+
+## Usage
+
+```
+Usage: mscore-to-eps.sh [-h] [-n] [<path>]
+
+Convert MuseScore files to eps using 'pdfcrop' and 'pdftops' or
+'Inkscape'. If <path> is omitted, all MuseScore files in the
+current working directory are converted. <path> can be either a
+directory or a MuseScore file.
+
+DEPENDENCIES
+	'pdfcrop' (included in TeXlive) and 'pdftops' (Poppler tools) or
+	'Inkscape'
+
+OPTIONS
+	-h, --help	Show this help message.
+	-n, --no-clean 	Do not remove / clean intermediate
+	                *.pdf files
+```
+
+## Testing
 
 ```
 make test
