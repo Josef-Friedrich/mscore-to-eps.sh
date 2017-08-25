@@ -27,8 +27,13 @@ EPS_TOOL=pdftops
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-_usage() {
-	echo "Usage: $(basename "$0") [-h] [-n] [<path>]
+FIRST_RELEASE=2017-08-13
+VERSION=1.0
+PROJECT_PAGES="https://github.com/JosefFriedrich-shell/skeleton.sh"
+SHORT_DESCRIPTION='Convert MuseScore files (*.mscz, *.mscx) to the EPS file format.'
+USAGE="Usage: $(basename "$0") [-h] [-n] [<path>]
+
+$SHORT_DESCRIPTION
 
 Convert MuseScore files to eps using 'pdfcrop' and 'pdftops' or
 'Inkscape'. If <path> is omitted, all MuseScore files in the
@@ -43,7 +48,6 @@ OPTIONS
 	-h, --help	Show this help message.
 	-n, --no-clean 	Do not remove / clean intermediate
 	                *.$INTER_FORMAT files"
-}
 
 if [ $(uname) = 'Darwin' ]; then
 	if command -v greadlink > /dev/null ; then
@@ -124,7 +128,7 @@ _do_file() {
 	_clean "$BASENAME"
 }
 
-### This SEPARATOR is needed for the tests. Do not remove it! ##########
+## This SEPARATOR is required for test purposes. Please don’t remove! ##
 
 if [ "$(basename "$0")" = "mscore-to-eps.sh" ]; then
 
@@ -134,7 +138,7 @@ if [ "$(basename "$0")" = "mscore-to-eps.sh" ]; then
 	fi
 
 	if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
-		_usage
+		echo "$USAGE"
 		exit 0
 	fi
 

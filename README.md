@@ -2,10 +2,17 @@
 
 # mscore-to-eps.sh
 
+
+## Summary / Short description
+
+> Convert MuseScore files (*.mscz, *.mscx) to the EPS file format.
+
 ## Usage
 
 ```
-Usage: mscore-to-eps.sh [-h] [-n] [<path>]
+Usage: skeleton.sh [-h] [-n] [<path>]
+
+Convert MuseScore files (*.mscz, *.mscx) to the EPS file format.
 
 Convert MuseScore files to eps using 'pdfcrop' and 'pdftops' or
 'Inkscape'. If <path> is omitted, all MuseScore files in the
@@ -21,9 +28,9 @@ OPTIONS
 	-n, --no-clean 	Do not remove / clean intermediate
 	                *.pdf files
 ```
-
 ## Testing
 
 ```
 make test
 ```
+
