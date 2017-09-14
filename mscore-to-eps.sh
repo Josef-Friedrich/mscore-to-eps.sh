@@ -48,7 +48,12 @@ OPTIONS
 	-h, --help
 	  Show this help message.
 	-n, --no-clean
-	  Do not remove / clean intermediate *.$INTER_FORMAT files"
+	  Do not remove / clean intermediate *.$INTER_FORMAT files
+	-s, --short-description
+	  Show a short description / summary.
+	-v, --version
+	  Show the version number of this script.
+"
 
 if [ $(uname) = 'Darwin' ]; then
 	if command -v greadlink > /dev/null ; then

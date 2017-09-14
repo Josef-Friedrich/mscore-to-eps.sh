@@ -10,7 +10,7 @@
 ## Usage
 
 ```
-Usage: skeleton.sh [-h] [-n] [<path>]
+Usage: mscore-to-eps.sh [-hnsv] [<path>]
 
 Convert MuseScore files (*.mscz, *.mscx) to the EPS file format.
 
@@ -24,9 +24,15 @@ DEPENDENCIES
 	'Inkscape'
 
 OPTIONS
-	-h, --help	Show this help message.
-	-n, --no-clean 	Do not remove / clean intermediate
-	                *.pdf files
+	-h, --help
+	  Show this help message.
+	-n, --no-clean
+	  Do not remove / clean intermediate *.pdf files
+	-s, --short-description
+	  Show a short description / summary.
+	-v, --version
+	  Show the version number of this script.
+
 ```
 
 ## Project pages
