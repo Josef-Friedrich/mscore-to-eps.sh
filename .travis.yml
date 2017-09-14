@@ -1,5 +1,10 @@
 language: bash
 dist: trusty
 
+before_install:
+  - sudo add-apt-repository ppa:mscore-ubuntu/mscore-stable -y
+  - sudo apt-get update -qq
+  - sudo apt-get install musescore
+
 script:
   - make -s test
