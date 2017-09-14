@@ -28,6 +28,11 @@ OPTIONS
 	-n, --no-clean 	Do not remove / clean intermediate
 	                *.pdf files
 ```
+
+## Project pages
+
+* https://github.com/JosefFriedrich-shell/mscore-to-eps.sh
+
 ## Testing
 
 ```
