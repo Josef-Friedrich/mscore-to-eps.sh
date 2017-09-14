@@ -31,7 +31,7 @@ FIRST_RELEASE=2017-08-13
 VERSION=1.0
 PROJECT_PAGES="https://github.com/JosefFriedrich-shell/mscore-to-eps.sh"
 SHORT_DESCRIPTION='Convert MuseScore files (*.mscz, *.mscx) to the EPS file format.'
-USAGE="Usage: $(basename "$0") [-h] [-n] [<path>]
+USAGE="Usage: mscore-to-eps.sh [-hnsv] [<path>]
 
 $SHORT_DESCRIPTION
 
@@ -69,6 +69,7 @@ _getopts() {
 	while getopts ':hnsv-:' OPT ; do
 		case $OPT in
 			h) echo "$USAGE" ; exit 0 ;;
+			n) OPT_NO_CLEAN=1 ;;
 			s) echo "$SHORT_DESCRIPTION" ; exit 0 ;;
 			v) echo "$VERSION" ; exit 0 ;;
 
@@ -80,7 +81,7 @@ _getopts() {
 
 				case $OPTARG in
 					help) echo "$USAGE" ; exit 0 ;;
-					no-clean) OPT_OPT_NO_CLEAN=1 ;;
+					no-clean) OPT_NO_CLEAN=1 ;;
 					short-description) echo "$SHORT_DESCRIPTION" ; exit 0 ;;
 					version) echo "$VERSION" ; exit 0 ;;
 

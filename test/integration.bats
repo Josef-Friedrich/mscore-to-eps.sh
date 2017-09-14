@@ -11,7 +11,7 @@ T='./test/files/'
 @test "execute: mscore-to-eps.sh -h" {
 	run ./mscore-to-eps.sh -h
 	[ "$status" -eq 0 ]
-	[ "${lines[0]}" = "Usage: mscore-to-eps.sh [-h] [-n] [<path>]" ]
+	[ "${lines[0]}" = "Usage: mscore-to-eps.sh [-hnsv] [<path>]" ]
 }
 
 @test "execute: mscore-to-eps.sh ${T}single-page.mscx" {
