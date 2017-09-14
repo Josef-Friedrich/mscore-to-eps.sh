@@ -130,39 +130,35 @@ _do_file() {
 
 ## This SEPARATOR is required for test purposes. Please don’t remove! ##
 
-if [ "$(basename "$0")" = "mscore-to-eps.sh" ]; then
-
-	if [ "$1" = '-n' ] || [ "$1" = '--no-clean' ]; then
-		NO_CLEAN="1"
-		shift
-	fi
-
-	if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
-		echo "$USAGE"
-		exit 0
-	fi
-
-	FILE="$1"
-
-	if [ -f "$FILE" ]; then
-		_do_file "$FILE"
-		exit 0
-	fi
-
-	if [ -d "$FILE" ]; then
-		FILES=$(find "$FILE" -iname '*.mscz' -or -iname '*.mscx')
-	elif [ -z "$FILE" ]; then
-		FILES=$(find . -iname '*.mscz' -or -iname '*.mscx')
-	fi
-
-	if [ "$FILES" = '' ]; then
-		echo 'No files to convert found!'
-		_usage
-		exit 1
-	fi
-
-	for FILE in $FILES; do
-		_do_file "$FILE"
-	done
-
+if [ "$1" = '-n' ] || [ "$1" = '--no-clean' ]; then
+	NO_CLEAN="1"
+	shift
 fi
+
+if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
+	echo "$USAGE"
+	exit 0
+fi
+
+FILE="$1"
+
+if [ -f "$FILE" ]; then
+	_do_file "$FILE"
+	exit 0
+fi
+
+if [ -d "$FILE" ]; then
+	FILES=$(find "$FILE" -iname '*.mscz' -or -iname '*.mscx')
+elif [ -z "$FILE" ]; then
+	FILES=$(find . -iname '*.mscz' -or -iname '*.mscx')
+fi
+
+if [ "$FILES" = '' ]; then
+	echo 'No files to convert found!'
+	_usage
+	exit 1
+fi
+
+for FILE in $FILES; do
+	_do_file "$FILE"
+done
