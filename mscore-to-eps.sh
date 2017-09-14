@@ -45,9 +45,10 @@ DEPENDENCIES
 	'Inkscape'
 
 OPTIONS
-	-h, --help	Show this help message.
-	-n, --no-clean 	Do not remove / clean intermediate
-	                *.$INTER_FORMAT files"
+	-h, --help
+	  Show this help message.
+	-n, --no-clean
+	  Do not remove / clean intermediate *.$INTER_FORMAT files"
 
 if [ $(uname) = 'Darwin' ]; then
 	if command -v greadlink > /dev/null ; then
@@ -59,6 +60,45 @@ homebrew to install them: brew install coreutils gnu-sed"
 		exit 1
 	fi
 fi
+
+# Exit codes
+# Invalid option: 2
+# Missing argument: 3
+# No argument allowed: 4
+_getopts() {
+	while getopts ':hnsv-:' OPT ; do
+		case $OPT in
+			h) echo "$USAGE" ; exit 0 ;;
+			s) echo "$SHORT_DESCRIPTION" ; exit 0 ;;
+			v) echo "$VERSION" ; exit 0 ;;
+
+			\?) echo "Invalid option “-$OPTARG”!" >&2 ; exit 2 ;;
+			:) echo "Option “-$OPTARG” requires an argument!" >&2 ; exit 3 ;;
+
+			-)
+				LONG_OPTARG="${OPTARG#*=}"
+
+				case $OPTARG in
+					help) echo "$USAGE" ; exit 0 ;;
+					no-clean) OPT_OPT_NO_CLEAN=1 ;;
+					short-description) echo "$SHORT_DESCRIPTION" ; exit 0 ;;
+					version) echo "$VERSION" ; exit 0 ;;
+
+					help*|no-clean*|short-description*|version*)
+						echo "No argument allowed for the option “--$OPTARG”!" >&2
+						exit 4
+						;;
+
+					'') break ;; # "--" terminates argument processing
+					*) echo "Invalid option “--$OPTARG”!" >&2 ; exit 2 ;;
+
+				esac
+				;;
+
+		esac
+	done
+	GETOPTS_SHIFT=$((OPTIND - 1))
+}
 
 _mscore() {
 	if [ "$(uname)" = "Darwin" ]; then
@@ -104,7 +144,7 @@ _to_eps() {
 }
 
 _clean() {
-	if [ ! "$NO_CLEAN" = "1" ]; then
+	if [ ! "$OPT_NO_CLEAN" = "1" ]; then
 		rm -f "$1".$INTER_FORMAT
 	fi
 }
@@ -130,15 +170,8 @@ _do_file() {
 
 ## This SEPARATOR is required for test purposes. Please don’t remove! ##
 
-if [ "$1" = '-n' ] || [ "$1" = '--no-clean' ]; then
-	NO_CLEAN="1"
-	shift
-fi
-
-if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
-	echo "$USAGE"
-	exit 0
-fi
+_getopts $@
+shift $GETOPTS_SHIFT
 
 FILE="$1"
 
