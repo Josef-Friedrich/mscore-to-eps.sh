@@ -3,6 +3,9 @@
 T='./test/files/'
 
 @test "execute: mscore-to-eps.sh ${T}no-mscore" {
+	if [ "$TRAVIS" = 'true' ]; then
+		skip
+	fi
 	run ./mscore-to-eps.sh "$T"no-mscore
 	[ "$status" -eq 1 ]
 	[ "${lines[0]}" = "No files to convert found!" ]
@@ -15,7 +18,9 @@ T='./test/files/'
 }
 
 @test "execute: mscore-to-eps.sh ${T}single-page.mscx" {
-	[ "$TRAVIS" != 'true' ] || skip
+	if [ "$TRAVIS" = 'true' ]; then
+		skip
+	fi
 	run ./mscore-to-eps.sh "$T"single-page.mscx
 	[ "$status" -eq 0 ]
 	[ -f "$T"single-page.eps ]
@@ -23,7 +28,9 @@ T='./test/files/'
 }
 
 @test "execute: mscore-to-eps.sh ${T}multiple-pages.mscx" {
-	[ "$TRAVIS" != 'true' ] || skip
+	if [ "$TRAVIS" = 'true' ]; then
+		skip
+	fi
 	run ./mscore-to-eps.sh "$T"multiple-pages.mscx
 	[ "$status" -eq 0 ]
 	[ -f "$T"multiple-pages_1.eps ]
@@ -33,7 +40,9 @@ T='./test/files/'
 }
 
 @test "execute: mscore-to-eps.sh ${T}" {
-	[ "$TRAVIS" != 'true' ] || skip
+	if [ "$TRAVIS" = 'true' ]; then
+		skip
+	fi
 	run ./mscore-to-eps.sh "$T"
 	[ "$status" -eq 0 ]
 	[ -f "$T"single-page.eps ]
