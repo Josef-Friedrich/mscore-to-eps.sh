@@ -26,14 +26,14 @@ T='./test/files'
 	fi
 }
 
-@test "unittest: _check_exec unkown" {
-	run _check_exec e763978f71116cbe0301d7007d06b2f73cc511b25f58dfc77a496d10830ae186
+@test "unittest: _check_for_executable unkown" {
+	run _check_for_executable e763978f71116cbe0301d7007d06b2f73cc511b25f58dfc77a496d10830ae186
 	[ "$status" -eq 2 ]
 	[ "${lines[0]}" = 'Missing binary “e763978f71116cbe0301d7007d06b2f73cc511b25f58dfc77a496d10830ae186”!' ]
 }
 
-@test "unittest: _check_exec known" {
-	run _check_exec echo
+@test "unittest: _check_for_executable known" {
+	run _check_for_executable echo
 	[ "$status" -eq 0 ]
 	[ "${lines[0]}" = '' ]
 }
