@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JosefFriedrich-shell/mscore-to-eps.sh.svg?branch=master)](https://travis-ci.org/JosefFriedrich-shell/mscore-to-eps.sh)
+[![Build Status](https://travis-ci.org/Josef-Friedrich/mscore-to-eps.sh.svg?branch=master)](https://travis-ci.org/Josef-Friedrich/mscore-to-eps.sh)
 
 # mscore-to-eps.sh
 
@@ -37,7 +37,7 @@ OPTIONS
 
 ## Project pages
 
-* https://github.com/JosefFriedrich-shell/mscore-to-eps.sh
+* https://github.com/Josef-Friedrich/mscore-to-eps.sh
 
 ## Testing
 
